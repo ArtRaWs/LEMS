@@ -15,7 +15,7 @@ $("videos").innerHTML=VIDEOS.map(function(v,i){
 /*  Cartilhas 
    Para adicionar uma cartilha, copie um bloco abaixo, ponha a capa em assets/img/ e preencha os campos. */
 var CARTILHAS=[
-{titulo:"Conhecendo a meio-fauna",desc:"Uma introdução ilustrada aos organismos microscópicos que vivem entre os grãos de areia.",capa:"assets/img/cartilha-meiofauna.png",alt:"Capa da cartilha Vida entre grãos: conhecendo a meiofauna, Recife, 2023",arquivo:"assets/pdf/conhecendo a meio-fauna ebook.pdf"}
+{titulo:"Conhecendo a meiofauna",desc:"Uma introdução ilustrada aos organismos microscópicos que vivem entre os grãos de areia.",capa:"assets/img/cartilha-meiofauna.png",alt:"Capa da cartilha Vida entre grãos: conhecendo a meiofauna, Recife, 2023",arquivo:"assets/pdf/conhecendo a meio-fauna ebook.pdf"}
 ];
 
 $("cartilhas-lista").innerHTML=CARTILHAS.map(function(c){return '<article class="cart rv"><img class="cart-capa" src="'+c.capa+'" alt="'+c.alt+'" loading="lazy"><div class="cart-txt"><span class="pill">CARTILHA</span><h3>'+c.titulo+'</h3><p>'+c.desc+'</p><div class="cart-acoes"><a class="btn" href="'+c.arquivo+'" target="_blank" rel="noopener">Visualizar <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr">'+c.titulo+' em PDF (abre em nova aba)</span></a><a class="btn alt" href="'+c.arquivo+'" download>Baixar PDF <svg class="ico" aria-hidden="true"><use href="#i-down"/></svg><span class="sr">'+c.titulo+'</span></a></div></div></article>'}).join("");
