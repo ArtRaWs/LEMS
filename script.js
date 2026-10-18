@@ -15,10 +15,30 @@ $("videos").innerHTML=VIDEOS.map(function(v,i){
 /*  Cartilhas 
    Para adicionar uma cartilha, copie um bloco abaixo, ponha a capa em assets/img/ e preencha os campos. */
 var CARTILHAS=[
-{titulo:"Conhecendo a meiofauna",desc:"Uma introdução ilustrada aos organismos microscópicos que vivem entre os grãos de areia.",capa:"assets/img/cartilha-meiofauna.png",alt:"Capa da cartilha Vida entre grãos: conhecendo a meiofauna, Recife, 2023",arquivo:"assets/pdf/conhecendo a meio-fauna ebook.pdf"}
+/* "arquivo" = PDF dentro do site: quando o arquivo existe, o card mostra Visualizar + Baixar PDF.
+   "link" = PDF em outro site: serve de alternativa (botão Acessar cartilha) enquanto o arquivo não estiver em assets/pdf/.
+   "capa" é opcional: sem capa, aparece um cartão azul com ícone de livro. "rotulo" é opcional (padrão: CARTILHA). */
+{titulo:"Conhecendo a meiofauna",desc:"Uma introdução ilustrada aos organismos microscópicos que vivem entre os grãos de areia.",capa:"assets/img/cartilha-meiofauna.png",alt:"Capa da cartilha Vida entre grãos: conhecendo a meiofauna, Recife, 2023",arquivo:"assets/pdf/conhecendo a meio-fauna ebook.pdf"},
+{titulo:"O tesouro do Capibaribe",desc:"Uma aventura pelo rio Capibaribe, valorizando sua biodiversidade.",capa:"assets/img/cartilha-capi.png",alt:"Capa da cartilha Capi em O Tesouro do Capibaribe, com uma capivara diante do Recife",arquivo:"assets/pdf/Capi e o tesouro do capibaribe ebook.pdf",link:"https://editora.ufrpe.br/sites/editora.ufrpe.br/files/Capi%20e%20o%20tesouro%20do%20capibaribe%20ebook.pdf"},
+{titulo:"Moluscos bivalves",desc:"Apresenta os moluscos bivalves e suas características.", capa:"assets/img/moluscos-bivalves.jpeg",arquivo:"assets/pdf/CARTILHA MOLUSCOS BIVALVES  e-book.pdf",link:"https://editora.ufrpe.br/sites/editora.ufrpe.br/files/CARTILHA%20MOLUSCOS%20BIVALVES%20%20e-book.pdf"},
+{titulo:"Metodologia e processamento de escamas e conchas de pescado",desc:"Programa REMARTEC: apresenta iniciativas de educação e sensibilização ambiental relacionadas aos ambientes marinhos e costeiros.", capa:"assets/img/programa-remartec.jpeg",arquivo:"assets/pdf/E-BOOK PROGRAMA remartec.pdf",link:"https://editora.ufrpe.br/sites/editora.ufrpe.br/files/E-BOOK%20PROGRAMA%20remartec.pdf"},
+{titulo:"Guia de aulas de campo em espaços educativos",rotulo:"CARTILHA · PARTE 1",desc:"Reúne orientações e propostas para atividades educativas em espaços de campo.", capa:"assets/img/guia-aulas-de-campo-parte-1.jpeg",arquivo:"assets/pdf/ebook - Guia de aulas de campo em espaços educativos.pdf",link:"https://editora.ufrpe.br/sites/editora.ufrpe.br/files/ebook%20-%20Guia%20de%20aulas%20de%20campo%20em%20espa%C3%A7os%20educativos.pdf"},
+{titulo:"Guia de aulas de campo em espaços educativos",rotulo:"CARTILHA · PARTE 2",desc:"Segunda parte do guia, com orientações e propostas para atividades educativas em espaços de campo.", capa:"assets/img/guia-aulas-de-campo-parte-2.jpeg",arquivo:"assets/pdf/ebook Guia de Aulas de Campo em Espaços Educativos Parte 2.pdf",link:"https://editora.ufrpe.br/sites/editora.ufrpe.br/files/ebook%20Guia%20de%20Aulas%20de%20Campo%20em%20Espa%C3%A7os%20Educativos%20Parte%202.pdf"},
+{titulo:"Oceano Vivo – Metodologia ativa",desc:"Propõe uma metodologia ativa para aprender sobre os oceanos e seus organismos.",capa:"assets/img/oceano-vivo.jpeg", arquivo:"assets/pdf/OCEANO VIVO - METODOLOGIA ATIVA_V1.pdf",link:"https://editora.ufrpe.br/sites/editora.ufrpe.br/files/OCEANO%20VIVO%20-%20METODOLOGIA%20ATIVA_V1.pdf"}
 ];
 
-$("cartilhas-lista").innerHTML=CARTILHAS.map(function(c){return '<article class="cart rv"><img class="cart-capa" src="'+c.capa+'" alt="'+c.alt+'" loading="lazy"><div class="cart-txt"><span class="pill">CARTILHA</span><h3>'+c.titulo+'</h3><p>'+c.desc+'</p><div class="cart-acoes"><a class="btn" href="'+c.arquivo+'" target="_blank" rel="noopener">Visualizar <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr">'+c.titulo+' em PDF (abre em nova aba)</span></a><a class="btn alt" href="'+c.arquivo+'" download>Baixar PDF <svg class="ico" aria-hidden="true"><use href="#i-down"/></svg><span class="sr">'+c.titulo+'</span></a></div></div></article>'}).join("");
+function capaHTML(c){
+ if(c.capa)return '<div class="cart-capa" style="--capa:url(\''+c.capa+'\')"><img src="'+c.capa+'" alt="'+(c.alt||"")+'" loading="lazy"></div>';
+ return '<div class="cart-capa sem" aria-hidden="true"><svg class="ico"><use href="#i-book"/></svg></div>';}
+function pdfBtns(c){var h=encodeURI(c.arquivo);return '<a class="btn" href="'+h+'" target="_blank" rel="noopener">Visualizar <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr">'+c.titulo+' em PDF (abre em nova aba)</span></a><a class="btn alt" href="'+h+'" download>Baixar PDF <svg class="ico" aria-hidden="true"><use href="#i-down"/></svg><span class="sr">'+c.titulo+'</span></a>';}
+function linkBtn(c){return '<a class="btn" href="'+c.link.replace(/&/g,"&amp;")+'" target="_blank" rel="noopener">Acessar cartilha <svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr">'+c.titulo+' (abre em nova aba)</span></a>';}
+
+$("cartilhas-lista").innerHTML=CARTILHAS.map(function(c,i){return '<article class="cart rv">'+capaHTML(c)+'<div class="cart-txt"><span class="pill">'+(c.rotulo||"CARTILHA")+'</span><h3>'+c.titulo+'</h3><p>'+c.desc+'</p><div class="cart-acoes" id="acoes-'+i+'">'+((c.arquivo&&!c.link)?pdfBtns(c):linkBtn(c))+'</div></div></article>'}).join("");
+
+/* Se o PDF local existir, troca o botão "Acessar cartilha" por "Visualizar" + "Baixar PDF" */
+CARTILHAS.forEach(function(c,i){if(!(c.arquivo&&c.link))return;
+ fetch(encodeURI(c.arquivo),{method:"HEAD"}).then(function(r){
+  if(r.ok&&/pdf/i.test(r.headers.get("content-type")||""))$("acoes-"+i).innerHTML=pdfBtns(c)}).catch(function(){})});
 
 var modal=$("modal"),player=$("player"),last=null;
 function open(i){last=document.activeElement;var id=VIDEOS[i][2];
