@@ -159,14 +159,14 @@ article.cart{flex-direction:column;text-align:center;padding:20px 16px}
 .cart-capa{width:160px}
 .cart-txt{align-items:center}.cart-acoes{justify-content:center}
 }
-/* Projeto de pesquisa aprovado – FACEPE */
+/*  Projeto de pesquisa aprovado – FACEPE  */
 .facepe{position:relative;overflow:hidden;color:#fff;padding:70px 0 120px}
 /* onda de baixo: cor do início do quiz (#bfe5f4) */
 .facepe::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:56px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath fill='%23bfe5f4' d='M0 60h1200V38C1000 -2 800 56 600 32S200 2 0 38z'/%3E%3C/svg%3E") center/100% 100%;pointer-events:none}
 .facepe .wrap{position:relative;z-index:1}
 .fp-head{display:grid;grid-template-columns:1fr 1.25fr;gap:32px;align-items:center}
 .fp-eyebrow{display:flex;align-items:center;gap:10px;color:#cfeefb;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;margin-bottom:8px}
-.fp-eyebrow::before{content:"";width:34px;height:2px;background:#bfe8f8}
+
 .facepe h2{color:#fff;font-size:clamp(1.9rem,4.2vw,2.9rem);font-weight:800;margin:0 0 .35em}
 .fp-sub{margin:0;text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:.95rem;line-height:1.5;color:#e2f5fc}
 .prop{background:#fff;border-radius:18px;padding:10px;box-shadow:0 10px 28px #02223a40}
@@ -177,7 +177,7 @@ article.cart{flex-direction:column;text-align:center;padding:20px 16px}
 .prop-t{margin:0;color:var(--ink);font:600 1.05rem/1.4 "Bricolage Grotesque",sans-serif}
 .fp-acoes{margin-top:44px}
 .fp-acoes>h3{display:flex;align-items:center;gap:12px;color:#fff;font-size:1.35rem;margin:0 0 16px}
-.fp-acoes>h3::before{content:"";width:38px;height:2px;background:#fff}
+
 .acao{background:#fff;border-radius:18px;padding:18px 20px 20px;box-shadow:0 10px 28px #02223a40}
 .acao+.acao{margin-top:16px}
 .acao-t{display:flex;align-items:center;gap:14px;margin-bottom:14px}
@@ -203,5 +203,5 @@ article.cart{flex-direction:column;text-align:center;padding:20px 16px}
 .mar{position:relative;overflow:hidden;background:radial-gradient(circle,#ffffff2e 0 5px,transparent 6px) 0 0/130px 130px,radial-gradient(circle,#ffffff1f 0 9px,transparent 10px) 60px 40px/220px 220px,radial-gradient(circle at 10% 5%,#37b3e6 0,transparent 22%),radial-gradient(circle at 95% 90%,#0a6aa8 0,transparent 25%),linear-gradient(135deg,#087FBD,#07558A);animation:rise 60s linear infinite}
 .cultura{background:none;animation:none;padding-bottom:70px}
 .cultura::after{display:none}
-@media(max-width:760px){.fotos,.fotos.f4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.fotos,.fotos.f4{grid-template-columns:repeat(2,1fr)}.fotos.f3 .foto:last-child{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.mar{animation:none}}
